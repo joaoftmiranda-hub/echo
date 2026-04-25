@@ -5,8 +5,8 @@
 
     <!-- Notifications -->
 
-    <string name="recording">Recording…</string>
-    <string name="recording_saved">Recording saved</string>
+    <string name="recording">SIS Datalog…</string>
+    <string name="recording_saved">Datalog saved</string>
     <string name="cant_create_file">Couldn\'t create output file: </string>
     <string name="error_during_writing_history_into">Error during writing audio history into: </string>
     <string name="error_during_recording_into">Error during recording into: </string>
@@ -16,7 +16,7 @@
     <string name="listening_enabled_disable">Echo enabled</string>
     <string name="listening_disabled_enable">Echo disabled</string>
 
-    <string name="listening_description">Echo lets you go back in time and record events from the past.</string>
+    <string name="listening_description">SIS Datalog lets you go back in time and record events from the past.</string>
 
     <string name="recorded_static">Recording is in progress. Already saved the most recent</string>
     <plurals name="recorded">
