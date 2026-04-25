@@ -1,0 +1,33 @@
+name: Compilar APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Aceder ao código
+        uses: actions/checkout@v4
+
+      - name: 2. Preparar o ambiente (Java 21)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: 3. Remover bloqueio da marca do Java
+        run: rm -f gradle/gradle-daemon-jvm.properties
+
+      - name: 4. Dar permissão de execução
+        run: chmod +x ./gradlew
+
+      - name: 5. Compilar a App
+        run: ./gradlew assembleDebug
+
+      - name: 6. Guardar o ficheiro APK para download
+        uses: actions/upload-artifact@v4
+        with:
+          name: A_Minha_App_Personalizada
+          path: '**/*.apk'
