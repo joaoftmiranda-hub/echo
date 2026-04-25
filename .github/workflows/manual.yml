@@ -11,20 +11,22 @@ jobs:
       - name: 1. Aceder ao código
         uses: actions/checkout@v4
 
-      - name: 2. Preparar o ambiente (Java 21)
+      - name: 2. Preparar o ambiente (Java 17)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: '17'
 
-      - name: 3. Remover bloqueio da marca do Java
-        run: rm -f gradle/gradle-daemon-jvm.properties
+      - name: 3. Limpar bloqueios do computador antigo
+        run: |
+          rm -f gradle/gradle-daemon-jvm.properties
+          sed -i '/org.gradle.java.home/d' gradle.properties || true
 
       - name: 4. Dar permissão de execução
         run: chmod +x ./gradlew
 
       - name: 5. Compilar a App
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug -Dorg.gradle.java.home=$JAVA_HOME
 
       - name: 6. Guardar o ficheiro APK para download
         uses: actions/upload-artifact@v4
